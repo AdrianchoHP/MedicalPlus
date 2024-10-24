@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MEDICALPLUS</title>
+    <!-- Bootstrap CSS -->
+	<link rel="stylesheet" th:href="@{https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css}" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" th:href="@{/style.css}">
+</head>
+<body>
+<header class="container-fluid pt-1 pb-1 bg-primary d-flex justify-content-center">
+	           <img th:src="@{/medicalplus.png}" alt="#" style="width:300px; height: 100px;">
+</header>
+<nav class="navbar navbar-expand-lg navbar-dark p-3" id="menu">
+    <div class="container">
+        <a class="navbar-brand" href="#">
+            <img th:src="@{/java_logo_blanco.png}" alt="#">
+            <span class="ml-2 fs-5 text-white fw-bold">MedicalPlus - Gestion de Citas</span>
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <!-- Agrega los elementos del menú aquí -->
+				<li class="nav-item">
+					<a class="nav-link" th:href="@{/}">
+				    	<img th:src="@{/home.png}" alt="Imagen 0" class="btn-img custom-size">
+				    </a>
+				</li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<div class="container p-4">
+    <center>
+        <h2 class="section__title">Menu de Gestion de Citas MedicalPlus</h2>
+    </center><br><br>
+    <div class="d-flex flex-wrap justify-content-center">
+        <div class="p-3">
+            <a th:href="@{/citas}" class="btn btn-primary btn-lg">
+                <img th:src="@{/club.png}" alt="Imagen 1" class="btn-img">
+                Ver Citas
+            </a>
+        </div>
+        <div class="p-3">
+            <a th:href="@{/especialidades}" class="btn btn-primary btn-lg">
+				<img th:src="@{/asociacion.png}" alt="Imagen 2" class="btn-img">
+                Ver Especialidad
+            </a>
+        </div>
+        <div class="p-3">
+            <a th:href="@{/epss}" class="btn btn-primary btn-lg">
+				<img th:src="@{/competicion.png}" alt="Imagen 3" class="btn-img">
+                Ver EPS
+            </a>
+        </div>
+        <div class="p-3">
+            <a th:href="@{/doctores}" class="btn btn-primary btn-lg">
+				<img th:src="@{/coach.png}" alt="Imagen 4" class="btn-img">
+                Ver Doctor
+            </a>
+        </div>
+        <div class="p-3">
+            <a th:href="@{/pacientes}" class="btn btn-primary btn-lg">
+				<img th:src="@{/player.png}" alt="Imagen 5" class="btn-img">
+                Ver Paciente 
+            </a>
+        </div>
+    </div><br>
+	
+	<div class="return mt-3 text-center">
+		<a class="btn btn-danger" href="/">
+			<i style="color: white;"></i> Salir
+		</a>
+	</div>
+	
+</div>
+
+<footer class="bg-dark text-white mt-5 py-3">
+    <div class="container d-flex justify-content-center justify-content-lg-between align-items-center flex-wrap">
+        <p class="text-lg-start flex-grow-1 mb-0">&copy; Marlon Yesid Sánchez Moncada - Derechos Reservados.</p>
+        <div class="social-links d-flex justify-content-center justify-content-lg-end align-items-center">
+            <a href="#"><img th:src="@{/facebook.png}" alt="Facebook" width="40px" height="40px"></a>
+            <a href="#"><img th:src="@{/instagram.png}" alt="Instagram" width="40px" height="40px"></a>
+            <a href="#"><img th:src="@{/twitter.png}" alt="Twitter" width="40px" height="40px"></a>
+            <a href="#"><img th:src="@{/youtube.png}" alt="YouTube" width="40px" height="40px"></a>
+        </div>
+    </div>
+</footer>
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script th:src="@{https://code.jquery.com/jquery-3.3.1.slim.min.js}" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script th:src="@{https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js}" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script th:src="@{https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js}" intity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</body>
+
+</html>

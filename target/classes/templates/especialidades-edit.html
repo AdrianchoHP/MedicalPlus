@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <link rel="shortcut icon" th:href="@{/img/iconp.png}" type="image/x-icon">
+	<meta charset="UTF-8">
+	<meta http-equiv="Content-Type" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Editar Especialidad</title>
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" th:href="@{https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css}" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" th:href="@{/style.css}">
+	<script src="https://kit.fontawesome.com/a8699accd2.js" crossorigin="anonymous"></script>
+
+</head>
+<body>
+	<header class="container-fluid pt-1 pb-1 bg-primary d-flex justify-content-center">
+		           <img th:src="@{/medicalplus.png}" alt="#" style="width:300px; height: 100px;">
+	</header>
+	<nav class="navbar navbar-expand-lg navbar-dark p-3" id="menu">
+	    <div class="container">
+	        <a class="navbar-brand" href="#">
+	            <img th:src="@{/java_logo_blanco.png}" alt="#">
+	            <span class="ml-2 fs-5 text-white fw-bold">MedicalPlus - Gestion de Citas</span>
+	        </a>
+	        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+	                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+	            <span class="navbar-toggler-icon"></span>
+	        </button>
+	        <div class="collapse navbar-collapse" id="navbarNav">
+	            <ul class="navbar-nav ml-auto">
+	                <!-- Agrega los elementos del menú aquí -->
+					<li class="nav-item">
+						<a class="nav-link" th:href="@{/index}">
+					    	<img th:src="@{/home.png}" alt="Imagen 0" class="btn-img custom-size">
+					    </a>
+					</li>
+	            </ul>
+	        </div>
+	    </div>
+	</nav>
+
+
+<main>
+        <div class="container d-flex flex-column justify-content-center align-items-center">
+
+            <h2 class="text-center custom-header mt-4">Actualizar Datos de la Especialidad</h2>
+        <form th:action="@{/especialidades/save/edit}" th:object="${especialidades}" method="post" onsubmit="return validarEdad();" class="mx-auto w-40">
+            <input type="hidden" th:field="*{id}">
+            <div class="form-floating">
+                <label for="nombre" class="form-label p-2">Nombre Especialidad: </label>
+				<br>
+                <input type="text" id="name" th:field="*{nombre}" placeholder="Ingrese el nombre..." class="form-control" required>
+            </div>
+
+            <div class="form-floating">
+                <label for="name" class="form-label p-2">Presidente: </label>
+				<br>
+                <input type="text" id="edad" th:field="*{presidente}" placeholder="Ingrese el presidente..." class="form-control"required>
+            </div>
+            <div class="form-floating">
+                <label for="name" class="form-label p-2">Siglas: </label>
+				<br>
+                <input type="text" id="posicion" th:field="*{siglas}" placeholder="Ingrese las siglas..." class="form-control"required>
+            </div>
+            <div id="error-messages" th:classappend="${errorMessage} ? 'bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative' : ''" th:text="${errorMessage}">
+			
+			</div><br>
+			<div class="return mb-3">
+					    <a class="btn btn-warning "  th:href="@{/asociaciones}">
+					        <i class="fa-solid fa-arrow-left" style="color: #000000;"></i> Volver
+					    </a>
+					</div>
+            <div class="btm-primary">
+				<input type="submit" class="form-control btn-primary me-4" value="Guardar">
+            </div>
+        </form>
+    </div><br><br>
+</main>
+<footer class="bg-dark text-white mt-5 py-3">
+    <div class="container d-flex justify-content-center justify-content-lg-between align-items-center flex-wrap">
+        <p class="text-lg-start flex-grow-1 mb-0">&copy; Marlon Yesid Sánchez Moncada - Derechos Reservados.</p>
+        <div class="social-links d-flex justify-content-center justify-content-lg-end align-items-center">
+            <a href="#"><img th:src="@{/facebook.png}" alt="Facebook" width="40px" height="40px"></a>
+            <a href="#"><img th:src="@{/instagram.png}" alt="Instagram" width="40px" height="40px"></a>
+            <a href="#"><img th:src="@{/twitter.png}" alt="Twitter" width="40px" height="40px"></a>
+            <a href="#"><img th:src="@{/youtube.png}" alt="YouTube" width="40px" height="40px"></a>
+        </div>
+    </div>
+</footer>
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script th:src="@{https://code.jquery.com/jquery-3.3.1.slim.min.js}" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+</script>
+<script th:src="@{https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js}" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+</script>
+<script th:src="@{https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js}" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+</script>
+
+</body>
+
+</html>

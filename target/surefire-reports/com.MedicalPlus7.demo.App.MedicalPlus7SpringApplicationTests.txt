@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: com.MedicalPlus7.demo.App.MedicalPlus7SpringApplicationTests
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 7.405 s -- in com.MedicalPlus7.demo.App.MedicalPlus7SpringApplicationTests
