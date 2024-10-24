@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Mis Citas</title>
+    <!-- Meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" th:href="@{/css/team_table.css}">
+    <link rel="shortcut icon" th:href="@{/img/iconp.png}" type="image/x-icon">
+    <link rel="stylesheet" type="text/css" th:href="@{/style.css}">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" th:href="@{https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css}" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/a8699accd2.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <header class="container-fluid pt-1 pb-1 bg-primary d-flex justify-content-center">
+        <img th:src="@{/medicalplus.png}" alt="#" style="width:300px; height: 100px;">
+    </header>
+    
+    <nav class="navbar navbar-expand-lg navbar-dark p-3" id="menu">
+        <div class="container">
+            <a class="navbar-brand d-flex justify-content-center" href="#">
+                <img th:src="@{/java_logo_blanco.png}" alt="#">
+                <span class="ml-2 fs-5 text-white fw-bold">MedicalPlus - Gestion de Citas</span>
+            </a>
+            <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/index}">
+                            <img th:src="@{/home.png}" alt="Imagen 0" class="btn-img custom-size">
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav><br>
+
+    <main>
+        <div class="container p-4 text-center">
+            <h2 class="custom-header">Bienvenido, <span th:text="${userName}"></span></h2><br>
+            <h2 class="custom-header">Mis Citas</h2>
+            <div class="row justify-content-center">
+                <div>
+                    <table class="table table-striped m-3 tab table-primary table-hover text-center">
+                        <thead>
+                            <tr>
+                                <th>Id</th>
+                                <th>Paciente</th>
+                                <th>Doctor</th>
+                                <th>EPS</th>
+                                <th>Especialidad</th>
+                                <th>Fecha Cita</th>
+                                <th>Hora Cita</th>
+                                <th>Cancelar Cita</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr th:each="citas: ${citas}">
+                                <td>[[ ${citas.id} ]]</td>
+                                <td th:text="${citas.pacientes[0].nombre}"></td>
+                                <td th:text="${citas.doctores.nombre}"></td> 
+                                <td th:text="${citas.epss[0].nombre}"></td> 
+                                <td th:text="${citas.especialidades.nombre}"></td> 
+                                <td th:text="${#dates.format(citas.fechaCita, 'dd-MM-yyyy')}"></td>
+                                <td th:text="${#temporals.format(citas.horaCita, 'HH:mm')}"></td>
+                                <td>
+                                    <a class="mx-3 text-danger" th:href="@{/citas/delete/{id}(id = ${citas.id})}">
+                                        <i class="fa-solid fa-trash" style="color: #A62C21;"></i>Cancelar
+                                    </a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="d-flex justify-content-center">
+                        <a class="btn btn-danger mx-2" th:href="@{/}">
+                            <i class="fa-regular fa-circle-xmark"></i> Salir
+                        </a>
+                        <a class="btn btn-primary mx-2" th:href="@{/citas/pacientes/new}">
+                            <i class="fas fa-plus"></i> Agendar
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+	<br><br><br>
+
+	<script type="text/javascript">
+	  (function(d, t) {
+	      var v = d.createElement(t), s = d.getElementsByTagName(t)[0];
+	      v.onload = function() {
+	        window.voiceflow.chat.load({
+	          verify: { projectID: '671903a596a09f3dc828afab' },
+	          url: 'https://general-runtime.voiceflow.com',
+	          versionID: 'production'
+	        });
+	      }
+	      v.src = "https://cdn.voiceflow.com/widget/bundle.mjs"; v.type = "text/javascript"; s.parentNode.insertBefore(v, s);
+	  })(document, 'script');
+	</script>
+	
+    <footer class="bg-dark text-white mt-5 py-3">
+        <div class="container d-flex justify-content-center align-items-center">
+            <p class="text-center mb-0">&copy; Marlon Yesid Sánchez Moncada - Derechos Reservados.</p>
+            <div class="social-links d-flex justify-content-center">
+                <a href="#"><img th:src="@{/facebook.png}" alt="Facebook" width="40px" height="40px" class="mx-2"></a>
+                <a href="#"><img th:src="@{/instagram.png}" alt="Instagram" width="40px" height="40px" class="mx-2"></a>
+                <a href="#"><img th:src="@{/twitter.png}" alt="Twitter" width="40px" height="40px" class="mx-2"></a>
+                <a href="#"><img th:src="@{/youtube.png}" alt="YouTube" width="40px" height="40px" class="mx-2"></a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

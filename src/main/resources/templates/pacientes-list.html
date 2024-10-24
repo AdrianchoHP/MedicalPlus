@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Tabla Pacientes</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<link rel="stylesheet" type="text/css" th:href="@{/style.css}">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" th:href="@{https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css}" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/a8699accd2.js" crossorigin="anonymous"></script>
+   <style>
+        body {
+            background-color: #fff; /* Fondo blanco */
+            color: #000; /* Texto negro */
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            min-height: 100vh;
+        }
+
+        header {
+            background-color: #fff; /* Fondo blanco */
+            color: #000; /* Texto negro */
+            padding: 20px 0;
+        }
+
+        .logo img {
+            width: 100px;
+        }
+
+        .btn-custom {
+            background-color: #007bff; /* Azul */
+            border: none;
+            color: #000; /* Texto negro */
+            padding: 12px 24px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            border-radius: 8px;
+            transition-duration: 0.4s;
+            cursor: pointer;
+        }
+
+        .btn-custom:hover {
+            background-color: #0056b3; /* Azul más oscuro */
+        }
+
+        .table-container {
+            border-radius: 10px;
+            padding: 20px;
+            margin: 0 auto; /* Centrar horizontalmente */
+            max-width: 1300px; /* Establecer un ancho máximo */
+        }
+
+        .table-container table {
+            width: 100%; /* Hacer que la tabla ocupe todo el ancho disponible */
+        }
+
+        .table-container th,
+        .table-container td {
+            color: #000; /* Texto negro */
+        }
+
+        .table-container th {
+            font-weight: bold;
+        }
+
+        .table-container a {
+            text-decoration: none;
+        }
+
+        .table-container a:hover {
+            color: #F2A30F;
+        }
+
+        .btn-container {
+            margin-top: 20px; /* Espacio superior */
+            display: flex;
+            align-items: flex-start; /* Alineación superior */
+            justify-content: flex-start; /* Alineación izquierda */
+            padding-left: 20px; /* Ajuste de espaciado */
+        }
+
+        .btn-container a {
+            margin-right: 10px; /* Espacio entre botones */
+        }
+    </style>
+</head>
+
+<body>
+	<header class="container-fluid pt-1 pb-1 bg-primary d-flex justify-content-center">
+		           <img th:src="@{/medicalplus.png}" alt="#" style="width:300px; height: 100px;">
+	</header>
+	<nav class="navbar navbar-expand-lg navbar-dark p-3" id="menu">
+	    <div class="container">
+	        <a class="navbar-brand" href="#">
+	            <img th:src="@{/java_logo_blanco.png}" alt="#">
+	            <span class="ml-2 fs-5 text-white fw-bold">MedicalPlus - Gestion de Citas</span>
+	        </a>
+	        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+	                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+	            <span class="navbar-toggler-icon"></span>
+	        </button>
+	        <div class="collapse navbar-collapse" id="navbarNav">
+	            <ul class="navbar-nav ml-auto">
+	                <!-- Agrega los elementos del menú aquí -->
+					<li class="nav-item">
+						<a class="nav-link" th:href="@{/index}">
+					    	<img th:src="@{/home.png}" alt="Imagen 0" class="btn-img custom-size">
+					    </a>
+					</li>
+	            </ul>
+	        </div>
+	    </div>
+	</nav><br>
+
+
+   <main>
+        <div class="container p-4">
+					<h2 class="text-center custom-header">Pacientes Registrados</h2>
+
+            <div class="row justify-content-center">
+                <div class="col-lg-8 table-container">
+
+                    <table class="table table-striped mt-3 table-primary table-hover">
+                        <thead>
+                            <tr>
+                                <th>Id</th>
+                                <th>Nombre</th>
+                                <th>Apellido</th>
+                                <th>Edad</th>
+                                <th>Observaciones (Descripción)</th>
+								<th>Email</th>
+								<th>Contraseña</th>
+                                <th>Editar</th>
+                                <th>Eliminar</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr th:each="pacientes: ${pacientes}">
+                                <td>[[ ${pacientes.id} ]]</td>
+                                <td>[[ ${pacientes.nombre} ]]</td>
+                                <td>[[ ${pacientes.apellido} ]]</td>
+                                <td>[[ ${pacientes.edad} ]]</td>
+                                <td>[[ ${pacientes.descripcion} ]]</td>
+								<td>[[ ${pacientes.correo} ]]</td> <!-- Muestra el correo -->
+								<td>[[ ${pacientes.contraseña} ]]</td> <!-- Muestra la contraseña -->
+								                    
+                                <td>
+                                    <a class="mx-3 text-warning" th:href="@{/pacientes/edit/{id}(id = ${pacientes.id})}">
+                                        <i class="fa-solid fa-file-pen" style="color: #F2A30F;"></i> Editar
+                                    </a>
+                                </td>
+                                <td>
+                                    <a class="mx-3 text-danger" th:href="@{/pacientes/delete/{id}(id = ${pacientes.id})}">
+                                        <i class="fa-solid fa-trash" style="color: #A62C21;"></i> Eliminar
+                                    </a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+					<a class="btn btn-primary" th:href="@{/index}">
+					    <i class="fas fa-home"></i> Menú
+					</a>
+					<a th:href="@{/pacientes/new}"class="btn btn-primary">
+					    <i class="fas fa-plus"></i> Nuevo
+					</a>
+                </div>
+            </div>
+        </div>
+    </main>
+	<footer class="bg-dark text-white mt-5 py-3">
+	    <div class="container d-flex justify-content-center justify-content-lg-between align-items-center flex-wrap">
+	        <p class="text-lg-start flex-grow-1 mb-0">&copy; Marlon Yesid Sánchez Moncada - Derechos Reservados.</p>
+	        <div class="social-links d-flex justify-content-center justify-content-lg-end align-items-center">
+	            <a href="#"><img th:src="@{/facebook.png}" alt="Facebook" width="40px" height="40px"></a>
+	            <a href="#"><img th:src="@{/instagram.png}" alt="Instagram" width="40px" height="40px"></a>
+	            <a href="#"><img th:src="@{/twitter.png}" alt="Twitter" width="40px" height="40px"></a>
+	            <a href="#"><img th:src="@{/youtube.png}" alt="YouTube" width="40px" height="40px"></a>
+	        </div>
+	    </div>
+	</footer>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script th:src="@{https://code.jquery.com/jquery-3.3.1.slim.min.js}" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script th:src="@{https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js}" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script th:src="@{https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js}" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</body>
+
+</html>
